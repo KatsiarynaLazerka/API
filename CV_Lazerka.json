@@ -1,9 +1,11 @@
 { 
-    "person":
+    "personal":
     {
         "name":"Katsiaryna",
         "surname":"Lazerka",
         "position":"Middle QA engineer",
+        "gender":"female",
+        "date_of_birth":"13/08/1994",
         "location":"Krakow, Poland",
         "remote_work":true
     },
@@ -38,7 +40,8 @@
     "work_history":
     [
         {
-            "period":"July 2019 - March 2020",
+            "start_date":"Jul 2019",
+            "end_date":"Mar 2020",
             "position":"Manual QA Engineer",
             "company":"Sam Solutions",
             "project_name":"European Patent Office (KMS Search Tool)",
@@ -47,7 +50,8 @@
             "tools_technologies_used":"Manual Testing, Jira, VirtualBox, Git, Slack"
         },
         {
-            "period":"November 2018 - January 2019",
+            "start_date":"Jan 2019",
+            "end_date":"Jun 2019",
             "position":"Manual QA Engineer",
             "company":"Sam Solutions",
             "project_name":"Advertising Marketplace Platform (AdBuy)",
@@ -56,7 +60,8 @@
             "tools_technologies_used":"Manual Testing, Jira, Confluence, Google docs, Skype"
         },
         {
-            "period":"November 2018 - January 2019",
+            "start_date":"Nov 2018",
+            "end_date":"Jan 2019",
             "position":"QA Engineer - Student",
             "company":"Sam Solutions",
             "project_name":"Product order management system",
@@ -68,34 +73,37 @@
     "education":
     [
         {
-            "date":"March 2023 - April 2023",
+            "period":"Mar 2023 - Apr 2023",
             "organizator":"Belhard",
             "country":"Belarus",
             "course":"Manual Testing Advanced level"
         },
         {
-            "date":"February 2023 - March 2023",
+            "period":"Feb 2023 - Mar 2023",
             "organizator":"Belhard",
             "country":"Belarus",
             "course":"Manual Testing Basic level"
         },
         {
-            "date":"October 2018",
+            "period":"Oct 2018",
             "organizator":"SkillUp",
             "country":"Belarus",
             "course":"Relational Databases (Basic SQL)"
         },
         {
-            "date":"September 2018",
+            "period":"Sep 2018",
             "organizator":"SkillUp",
             "country":"Belarus",
             "course":"Software Testing Basic level"
         },
         {
-            "date":"September 2012 - September 2014",
+            "period":"Sep 2012 - Sep 2014",
             "organizator":"BSU",
             "country":"Belarus",
             "course":"Faculty of Philology - Not Finished"
         }
-    ]
+    ],
+    "download": {
+            "url": "https://docs.google.com/document/d/1EzhiK_R1aobIIUF3aTQnJOwyPw7DAA0tgUItu1axKdQ/edit?usp=sharing"
+        }
 }
