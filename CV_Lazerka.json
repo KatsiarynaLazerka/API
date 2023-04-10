@@ -1,0 +1,101 @@
+{ 
+    "person":
+    {
+        "name":"Katsiaryna",
+        "surname":"Lazerka",
+        "position":"Middle QA engineer",
+        "location":"Krakow, Poland",
+        "remote_work":true
+    },
+    "contacts":
+    {
+        "email":"katherinepankratova@gmail.com",
+        "phone_number":"+48500515831",
+        "linkedIn_URL":"https://www.linkedin.com/in/lazerka/"
+    },
+    "summary":
+    {
+        "work_expirience":"More than 1 year of experience in functional testing of web applications",
+        "methodologies":"Agile and Kanban methodologies. Real work experience on different projects",
+        "communication_skills":"Self motivated and flexible person, a lot of practice in teamwork",
+        "languages":{"english":"B1", "polish":"A1"}
+    },
+    "skills":
+    {
+        "test_documentation":"Test cases, use cases, checklists, bug reports, test result report, test plan",
+        "requirements":"Analysis and testing at all stages of development",
+        "test_design":"Knowledges about implemention of the main types of test design",
+        "testing_processes":"Understanding of the software testing processes, types and levels of software testing",
+        "tools":["JIRA", "Confluence", "GitHub", "BitBucket", "TestRail", "VirtualBox", "Microsoft Office"],
+        "sql":"Basic level",
+        "collaboration_tools":["Zoom", "Slack", "Skype", "Microsoft Teams"]
+    },
+    "other":
+    {
+        "work_expirience":["Worked as an administrator for 6 years, have knowledge of personnel management and consider myself as good at communicating with people", 
+        "Experience with Adobe Photoshop, Lightroom, Premiere Pro for photography and video editing"]
+    },
+    "work_history":
+    [
+        {
+            "period":"July 2019 - March 2020",
+            "position":"Manual QA Engineer",
+            "company":"Sam Solutions",
+            "project_name":"European Patent Office (KMS Search Tool)",
+            "project description":"Web application to manage releases of patent classification with approval workflow and extended quality procedure. Patents examination system provides service for filing, managing or searching patents, trademarks and other intellectual property you need. Support and development of internal EPO business solutions based on Java technologies",
+            "responsibilities":"Manual regress and module testing. Bugs analysis and reproducing. Test Reporting. Making up test scenarios",
+            "tools_technologies_used":"Manual Testing, Jira, VirtualBox, Git, Slack"
+        },
+        {
+            "period":"November 2018 - January 2019",
+            "position":"Manual QA Engineer",
+            "company":"Sam Solutions",
+            "project_name":"Advertising Marketplace Platform (AdBuy)",
+            "project description":"Spring Java (backend) and React (frontend) REST API advertising marketplace platform for digitalizing advertisements selling and purchasing on different domains: radio, TV, outdoor advertising, internet",
+            "responsibilities":"Manual module, integration, regression, smoke and exploratory testing, making up test scenarios, test cases, checklists, defects reporting. Time estimation. Teamwork (31 developer, 8 manual QA, 1 automation QA, 3 analysts)",
+            "tools_technologies_used":"Manual Testing, Jira, Confluence, Google docs, Skype"
+        },
+        {
+            "period":"November 2018 - January 2019",
+            "position":"QA Engineer - Student",
+            "company":"Sam Solutions",
+            "project_name":"Product order management system",
+            "project description":"The internal project that allows people to order products online as a social package",
+            "responsibilities":"Manual testing, making up test cases, checklists. Meetings and teamwork",
+            "tools_technologies_used":"Manual Testing, Google docs, Microsoft Teams"
+        }
+    ],
+    "education":
+    [
+        {
+            "date":"March 2023 - April 2023",
+            "organizator":"Belhard",
+            "country":"Belarus",
+            "course":"Manual Testing Advanced level"
+        },
+        {
+            "date":"February 2023 - March 2023",
+            "organizator":"Belhard",
+            "country":"Belarus",
+            "course":"Manual Testing Basic level"
+        },
+        {
+            "date":"October 2018",
+            "organizator":"SkillUp",
+            "country":"Belarus",
+            "course":"Relational Databases (Basic SQL)"
+        },
+        {
+            "date":"September 2018",
+            "organizator":"SkillUp",
+            "country":"Belarus",
+            "course":"Software Testing Basic level"
+        },
+        {
+            "date":"September 2012 - September 2014",
+            "organizator":"BSU",
+            "country":"Belarus",
+            "course":"Faculty of Philology - Not Finished"
+        }
+    ]
+}
