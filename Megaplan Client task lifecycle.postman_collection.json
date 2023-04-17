@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "3d7381c1-f618-4cc0-b505-824398c59e40",
+		"name": "2 Megaplan Client HOMEWORK",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7227400"
+	},
+	"item": [
+		{
+			"name": "/api/v3/auth/access_token АВТОРИЗАЦИЯ 1 СОТР",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//set variables",
+							"var body = pm.response.json()",
+							"pm.collectionVariables.set(\"accessToken\", body.access_token);",
+							"",
+							"//test",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "Exploratory1@1.1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Exploratory1@1.1",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://radio-shop.megaplan.by/api/v3/auth/access_token",
+					"protocol": "https",
+					"host": [
+						"radio-shop",
+						"megaplan",
+						"by"
+					],
+					"path": [
+						"api",
+						"v3",
+						"auth",
+						"access_token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v3/offer СОЗДАНИЕ ТОВАРА",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//set variables",
+							"var body = pm.response.json()",
+							"pm.collectionVariables.set(\"offerId\", body.data.id);",
+							"",
+							"var body = pm.response.json()",
+							"pm.collectionVariables.set(\"name\", body.data.name);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"contentType\": \"Offer\",\n    \"tax\": {\n        \"id\": \"2\",\n        \"contentType\": \"Tax\"\n    },\n    \"attaches\": [],\n    \"price\": {\n        \"contentType\": \"Money\",\n        \"value\": 100,\n        \"currency\": \"USD\"\n    },\n    \"name\": \"{{$randomProductName}}\",\n    \"unit\": {\n        \"id\": \"12\",\n        \"contentType\": \"Unit\"\n    },\n    \"article\": \"ART1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://radio-shop.megaplan.by/api/v3/offer",
+					"protocol": "https",
+					"host": [
+						"radio-shop",
+						"megaplan",
+						"by"
+					],
+					"path": [
+						"api",
+						"v3",
+						"offer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v3/offer/{{offerId}} ПОЛУЧЕНИЕ ТОВАРА",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//tests",
+							"pm.test(\"All values are correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.article).to.eql(\"ART1\");",
+							"    pm.expect(jsonData.data.unit.id).to.eql(\"12\");",
+							"    pm.expect(jsonData.data.price.value).to.eql(100);",
+							"    pm.expect(jsonData.data.tax.id).to.eql(\"2\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://radio-shop.megaplan.by/api/v3/offer/{{offerId}}",
+					"protocol": "https",
+					"host": [
+						"radio-shop",
+						"megaplan",
+						"by"
+					],
+					"path": [
+						"api",
+						"v3",
+						"offer",
+						"{{offerId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v3/offer/{{offerId}} ОБНОВЛЕНИЕ ДАННЫХ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//tests",
+							"pm.test(\"Name was updated Simple dimple\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.name).to.eql(\"Simple dimple\");",
+							"});",
+							"pm.test(\"Price was updated 1000\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.price.value).to.eql(1000);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"contentType\": \"Offer\",\n    \"price\": {\n        \"contentType\": \"Money\",\n        \"value\": 1000,\n        \"currency\": \"USD\"\n    },\n    \"name\": \"Simple dimple\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://radio-shop.megaplan.by/api/v3/offer/{{offerId}}",
+					"protocol": "https",
+					"host": [
+						"radio-shop",
+						"megaplan",
+						"by"
+					],
+					"path": [
+						"api",
+						"v3",
+						"offer",
+						"{{offerId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v3/offer/{id} УДАЛЕНИЕ ТОВАРА",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Task successfully removed\", function () {",
+							"    pm.response.to.have.body({",
+							"    \"meta\": {",
+							"        \"status\": 200,",
+							"        \"errors\": []",
+							"    },",
+							"    \"data\": []",
+							"});",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"contentType\": \"Offer\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://radio-shop.megaplan.by/api/v3/offer/{{offerId}}",
+					"protocol": "https",
+					"host": [
+						"radio-shop",
+						"megaplan",
+						"by"
+					],
+					"path": [
+						"api",
+						"v3",
+						"offer",
+						"{{offerId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v3/offer/{{offerId}} ПРОВЕРКА УДАЛЕНИЯ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"//tests",
+							"pm.test(\"Not Found Task\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Not Found Offer with id = \");",
+							"pm.variables.get(\"offerId\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://radio-shop.megaplan.by/api/v3/offer/{{offerId}}",
+					"protocol": "https",
+					"host": [
+						"radio-shop",
+						"megaplan",
+						"by"
+					],
+					"path": [
+						"api",
+						"v3",
+						"offer",
+						"{{offerId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "accessToken",
+			"value": "1"
+		},
+		{
+			"key": "offerId",
+			"value": "1"
+		},
+		{
+			"key": "name",
+			"value": ""
+		}
+	]
+}
