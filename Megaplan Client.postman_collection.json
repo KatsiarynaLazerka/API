@@ -154,8 +154,9 @@
 							"//test",
 							"pm.test(\"Taks exists\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.data.id).to.eql(\"1009753\") //прописать task id",
+							"    pm.expect(jsonData.data.id).to.eql(pm.variables.get(\"taskId\"))",
 							"});",
+							"",
 							""
 						],
 						"type": "text/javascript"
@@ -448,7 +449,7 @@
 							"//test",
 							"pm.test(\"Taks exists\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.data.id).to.eql(\"1009753\"); //прописать task id",
+							"    pm.expect(jsonData.data.id).to.eql(pm.variables.get(\"taskId\"))",
 							"});"
 						],
 						"type": "text/javascript"
