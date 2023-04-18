@@ -68,7 +68,68 @@
 			"response": []
 		},
 		{
-			"name": "/api/v3/task СОЗДАНИЕ ЗАДАЧИ",
+			"name": "/api/v3/auth/access_token АВТОРИЗАЦИЯ 2 СОТР",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//set variables",
+							"var body = pm.response.json()",
+							"pm.collectionVariables.set(\"accessToken2\", body.access_token);",
+							"",
+							"//test",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "Exploratory2@1.1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Exploratory2@1.1",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://radio-shop.megaplan.by/api/v3/auth/access_token",
+					"protocol": "https",
+					"host": [
+						"radio-shop",
+						"megaplan",
+						"by"
+					],
+					"path": [
+						"api",
+						"v3",
+						"auth",
+						"access_token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v3/task СОЗДАНИЕ ЗАДАЧИ 1 СОТР",
 			"event": [
 				{
 					"listen": "test",
@@ -141,7 +202,7 @@
 			"response": []
 		},
 		{
-			"name": "/api/v3/task/{id} ПОЛУЧЕНИЕ ЗАДАЧИ",
+			"name": "/api/v3/task/{id} ПРОВЕРКА ЗАДАЧИ",
 			"event": [
 				{
 					"listen": "test",
@@ -191,7 +252,7 @@
 			"response": []
 		},
 		{
-			"name": "/api/v3/task/{id} ОПИСАНИЕ ЗАДАЧИ",
+			"name": "/api/v3/task/{id} ОПИСАНИЕ ЗАДАЧИ 1 СОТР",
 			"event": [
 				{
 					"listen": "test",
@@ -243,73 +304,6 @@
 						"v3",
 						"task",
 						"{{taskId}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/api/v3/auth/access_token АВТОРИЗАЦИЯ 2 СОТР",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"//set variables",
-							"var body = pm.response.json()",
-							"pm.collectionVariables.set(\"accessToken2\", body.access_token);",
-							"",
-							"//test",
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "username",
-							"value": "Exploratory2@1.1",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "Exploratory2@1.1",
-							"type": "text"
-						},
-						{
-							"key": "grant_type",
-							"value": "password",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://radio-shop.megaplan.by/api/v3/auth/access_token",
-					"protocol": "https",
-					"host": [
-						"radio-shop",
-						"megaplan",
-						"by"
-					],
-					"path": [
-						"api",
-						"v3",
-						"auth",
-						"access_token"
 					]
 				}
 			},
@@ -376,7 +370,7 @@
 			"response": []
 		},
 		{
-			"name": "/api/v3/task/{id}/doAction ЗАВЕРШИТЬ ЗАДАЧУ",
+			"name": "/api/v3/task/{id}/doAction ЗАВЕРШИТЬ ЗАДАЧУ 2 СОТР",
 			"event": [
 				{
 					"listen": "test",
@@ -436,55 +430,7 @@
 			"response": []
 		},
 		{
-			"name": "/api/v3/task/{id} ПОЛУЧИТЬ ЗАДАЧУ",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"//test",
-							"pm.test(\"Taks exists\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.data.id).to.eql(pm.variables.get(\"taskId\"))",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{accessToken}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "https://radio-shop.megaplan.by/api/v3/task/{{taskId}}",
-					"protocol": "https",
-					"host": [
-						"radio-shop",
-						"megaplan",
-						"by"
-					],
-					"path": [
-						"api",
-						"v3",
-						"task",
-						"{{taskId}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/api/v3/task/{id}/comments ОСТАВИТЬ КОММЕНТАРИЙ",
+			"name": "/api/v3/task/{id}/comments ОСТАВИТЬ КОММЕНТАРИЙ 2 СОТР",
 			"event": [
 				{
 					"listen": "test",
@@ -538,67 +484,6 @@
 						"task",
 						"{{taskId}}",
 						"comments"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/api/v3/auth/access_token АВТОРИЗОВАТЬСЯ 1 СОТР",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"//set variables",
-							"var body = pm.response.json()",
-							"pm.collectionVariables.set(\"accessToken\", body.access_token);",
-							"",
-							"//test",
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "username",
-							"value": "Exploratory1@1.1",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "Exploratory1@1.1",
-							"type": "text"
-						},
-						{
-							"key": "grant_type",
-							"value": "password",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://radio-shop.megaplan.by/api/v3/auth/access_token",
-					"protocol": "https",
-					"host": [
-						"radio-shop",
-						"megaplan",
-						"by"
-					],
-					"path": [
-						"api",
-						"v3",
-						"auth",
-						"access_token"
 					]
 				}
 			},
@@ -665,7 +550,7 @@
 			"response": []
 		},
 		{
-			"name": "/api/v3/task/{id} УДАЛИТЬ ЗАДАЧУ",
+			"name": "/api/v3/task/{id} УДАЛИТЬ ЗАДАЧУ 1 СОТР",
 			"event": [
 				{
 					"listen": "test",
@@ -720,7 +605,7 @@
 			"response": []
 		},
 		{
-			"name": "/api/v3/task/{id} ПРОВЕРИТЬ УДАЛЕНИЕ",
+			"name": "/api/v3/task/{id} ПРОВЕРКА УДАЛЕНИЯ",
 			"event": [
 				{
 					"listen": "test",
@@ -730,8 +615,9 @@
 							"    pm.response.to.have.status(404);",
 							"});",
 							"",
-							"pm.test(\"Not Found Task\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"Not Found Task\");",
+							"pm.test(\"Not Found task with this id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.meta.errors[0].message).to.eql(\"Not Found Task with id = \" + pm.variables.get(\"taskId\")); ",
 							"});"
 						],
 						"type": "text/javascript"
